@@ -1,0 +1,4 @@
+SRC += muse.c
+AUDIO_ENABLE = yes
+CONSOLE_ENABLE = yes
+KEY_LOCK_ENABLE = yes
