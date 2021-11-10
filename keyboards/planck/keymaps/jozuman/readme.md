@@ -13,7 +13,7 @@ https://docs.qmk.fm/#/newbs_building_firmware
 - If master does not have a green checkmark on the latest commit https://github.com/qmk/qmk_firmware or if you just want to ensure a little more stability, use the latest release tag in git.
   - `git checkout [tag-number]`
   - `git switch -c [tag-number]-branch`
-  - TODO next steps
+  - TODO next steps... I've done cherry-pick so far but what to do when lots of commits in the future.
 
 # Initial setup (more recently switched to rev6_drop instead of just rev6)
 - `qmk config user.keyboard=planck/rev6_drop`
