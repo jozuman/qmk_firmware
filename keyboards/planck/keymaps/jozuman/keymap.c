@@ -155,11 +155,15 @@ static bool win_pressed;
 void crazy_win_magic(uint16_t number_code){
     // if we aren't pressing the win key already, press and hold win key and record that we're holding it
     if (!win_pressed) {
-        print("register win\n");
+        #ifdef CONSOLE_ENABLE
+            print("register win\n");
+        #endif
         register_code(KC_LGUI);
         win_pressed = true;
     }
-    print("tapping number\n");
+    #ifdef CONSOLE_ENABLE
+        print("tapping number\n");
+    #endif
     tap_code(number_code);
 }
 
@@ -232,7 +236,9 @@ void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
     case TT(3):
       if (!record->event.pressed) {
         if (win_pressed) {
-            print("letting off win\n");
+            #ifdef CONSOLE_ENABLE
+                print("letting off win\n");
+            #endif
             // since we're still holding the win key but we've just let go of the layer 3 key, let's let go of the win key
             unregister_code(KC_LGUI);
             win_pressed = false;
