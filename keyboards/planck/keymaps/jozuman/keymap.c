@@ -23,15 +23,13 @@ enum planck_layers {
   _QWERTY,
   _LOWER,
   _RAISE,
-  _PLOVER,
+  _FUNCTION,
   _ADJUST
 };
 
 enum planck_keycodes {
   QWERTY = SAFE_RANGE,
-  PLOVER,
   BACKLIT,
-  EXT_PLV,
   MY_MACRO,
   WIN_1,
   WIN_2,
@@ -99,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, _______,    KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
 ),
 
-/* 3. Plover layer (http://opensteno.org)
+/* 3. Function layer
  * ,-----------------------------------------------------------------------------------.
  * |   1  | Win1 | Win2 | Win3 | Win4 | Win5 |   6  |   7  |   7  |   8  |   9  |   /  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -110,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |CtlAlD|      |      |   A  |   O  |             |   E  |   0  |   .  |Enter |   +  |
  * `-----------------------------------------------------------------------------------'
  */
-[_PLOVER] = LAYOUT_planck_grid(
+[_FUNCTION] = LAYOUT_planck_grid(
     KC_1,     WIN_1,            WIN_2, WIN_3,   WIN_4,        KC_5,  KC_6,  KC_7, KC_7, KC_8,   KC_9,    KC_PSLS,
     KC_NO,    LCTL(LSFT(KC_1)), KC_W,  KC_E,    KC_R,         KC_T,  KC_Y,  KC_U, KC_4, KC_5,   KC_6,    KC_PAST,
     KC_NO,    _______,          KC_S,  KC_D,    LSFT(KC_INS), KC_G,  KC_H,  KC_J, KC_1, KC_2,   KC_3,    KC_PMNS,
@@ -122,7 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |      | Reset|Debug | RGB  |RGBMOD| HUE+ | HUE- | SAT+ | SAT- |BRGTH+|BRGTH-|  Del |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |MUSmod|Aud on|Audoff|AGnorm|AGswap|Qwerty|      |      |Plover|      |
+ * |      |      |MUSmod|Aud on|Audoff|AGnorm|AGswap|Qwerty|      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |keyloc|Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|TermOn|TermOf|      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -131,7 +129,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] = LAYOUT_planck_grid(
     KC_TRNS, RESET,   DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL,
-    KC_TRNS, KC_TRNS, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  _______,  _______, PLOVER,  KC_TRNS,
+    KC_TRNS, KC_TRNS, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  _______,  _______, _______,  KC_TRNS,
     KC_LOCK, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  TERM_ON, TERM_OFF, BL_TOGG, BL_STEP, BL_BRTG,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, BL_ON,    BL_OFF,  BL_INC,  BL_DEC
 )
@@ -187,34 +185,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         #ifdef KEYBOARD_planck_rev5
           writePinHigh(E6);
         #endif
-      }
-      return false;
-      break;
-    case PLOVER:
-      if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          stop_all_notes();
-          PLAY_SONG(plover_song);
-        #endif
-        layer_off(_RAISE);
-        layer_off(_LOWER);
-        layer_off(_ADJUST);
-        layer_on(_PLOVER);
-        if (!eeconfig_is_enabled()) {
-            eeconfig_init();
-        }
-        keymap_config.raw = eeconfig_read_keymap();
-        keymap_config.nkro = 1;
-        eeconfig_update_keymap(keymap_config.raw);
-      }
-      return false;
-      break;
-    case EXT_PLV:
-      if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(plover_gb_song);
-        #endif
-        layer_off(_PLOVER);
       }
       return false;
       break;
