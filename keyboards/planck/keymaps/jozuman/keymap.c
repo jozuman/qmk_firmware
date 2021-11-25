@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  Up  |Shift'|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | Win  | Alt  |Layer5|Lower |    Space    |Raise |   /  | Left | Down |Right |
+ * | Ctrl | Win  | Alt  |  Fn  |Lower |    Space    |Raise |   /  | Left | Down |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_planck_grid(
@@ -105,14 +105,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |   K  |   W  |SftIns|   *  |   *  |   R  |   1  |   2  |   3  |   -  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |CtlAlD|      |      |   A  |   O  |             |   E  |   0  |   .  |Enter |   +  |
+ * |CtlAlD|      |      |   A  |   O  |             |   E  |   0  |   .  |   .  |   +  |
  * `-----------------------------------------------------------------------------------'
  */
 [_FUNCTION] = LAYOUT_planck_grid(
     KC_1,     WIN_1,            WIN_2, WIN_3,   WIN_4,        KC_5,  KC_6,  KC_7, KC_7, KC_8,   KC_9,    KC_PSLS,
     KC_NO,    LCTL(LSFT(KC_1)), KC_W,  KC_E,    KC_R,         KC_T,  KC_Y,  KC_U, KC_4, KC_5,   KC_6,    KC_PAST,
     KC_NO,    _______,          KC_S,  KC_D,    LSFT(KC_INS), KC_G,  KC_H,  KC_J, KC_1, KC_2,   KC_3,    KC_PMNS,
-    MY_MACRO, _______,          KC_NO, KC_TRNS, KC_V,         KC_NO, KC_NO, KC_N, KC_0, KC_DOT, KC_PENT, KC_PPLS
+    MY_MACRO, _______,          KC_NO, KC_TRNS, KC_V,         KC_NO, KC_NO, KC_N, KC_0, KC_DOT, KC_DOT,  KC_PPLS
 ),
 
 /* 4. Adjust (Lower + Raise)
@@ -122,9 +122,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |MUSmod|Aud on|Audoff|AGnorm|AGswap|Qwerty|      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |keyloc|Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|TermOn|TermOf|      |      |      |
+ * |keyloc|Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|TermOn|TermOf|BL_TOG|BL_STE|BL_BRT|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      |      |      |      |      |
+ * |      |      |      |      |      |             |      |BL_ON |BL_OFF|BL_INC|BL_DEC|
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_planck_grid(
