@@ -7,6 +7,7 @@ https://docs.qmk.fm/#/newbs_building_firmware
 
 # Getting latest code from upstream
 - use `mystuff` branch for all my commits
+- `git pull` in order to not miss anything I may have done anywhere else (especially because it will be completely lost with a -f)
 - `git fetch upstream`
 - `git rebase upstream/master`
 - `git push -f`
