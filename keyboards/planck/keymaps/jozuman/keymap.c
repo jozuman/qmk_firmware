@@ -17,7 +17,7 @@
 #include QMK_KEYBOARD_H
 #include "muse.h"
 #include "jozuman.h"
-// #include "print.h"
+#include "print.h"
 
 enum planck_layers {
   _QWERTY,
@@ -155,20 +155,20 @@ static bool win_pressed;
 void crazy_win_magic(uint16_t number_code){
     // if we aren't pressing the win key already, press and hold win key and record that we're holding it
     if (!win_pressed) {
-        // print("register win\n");
+        print("register win\n");
         register_code(KC_LGUI);
         win_pressed = true;
     }
-    // print("tapping number\n");
+    print("tapping number\n");
     tap_code(number_code);
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   // If console is enabled, it will print the matrix position and status of each key pressed
 
-  // #ifdef CONSOLE_ENABLE
-  //   uprintf("KL: kc: 0x%04X, col: %u, row: %u, pressed: %b, time: %u, interrupt: %b, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
-  // #endif
+  #ifdef CONSOLE_ENABLE
+    uprintf("KL: kc: 0x%04X, col: %u, row: %u, pressed: %b, time: %u, interrupt: %b, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
+  #endif
   switch (keycode) {
     case QWERTY:
       if (record->event.pressed) {
@@ -232,7 +232,7 @@ void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
     case TT(3):
       if (!record->event.pressed) {
         if (win_pressed) {
-            // print("letting off win\n");
+            print("letting off win\n");
             // since we're still holding the win key but we've just let go of the layer 3 key, let's let go of the win key
             unregister_code(KC_LGUI);
             win_pressed = false;
