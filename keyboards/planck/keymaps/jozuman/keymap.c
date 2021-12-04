@@ -110,7 +110,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  * MailAr = Outlook Mail Archive shortcut
  * TRM_PS = Terminal Paste = Shift + Insert to paste into terminals so function + v instead of ctrl + v
- * DM* = Dynamic Macros
  * CtlAlD = Ctrl + Alt + D + Custom Macro + More
  */
 [_FUNCTION] = LAYOUT_planck_grid(
@@ -131,6 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |  ^^  |  ^^  |  ^^  |  ^^  |  ^^  |             |  ^^  |BL_ON |BL_OFF|BL_INC|BL_DEC|
  * `-----------------------------------------------------------------------------------'
+ * DM* = Dynamic Macros. tried putting these on the Function layer but I was encountering issues
  */
 [_ADJUST] = LAYOUT_planck_grid(
     KC_TRNS, RESET,   DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL,
