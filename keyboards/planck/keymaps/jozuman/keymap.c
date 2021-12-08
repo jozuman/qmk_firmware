@@ -199,7 +199,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case MY_MACRO:
       if (record->event.pressed) {
-          SEND_STRING(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_TAP(X_DEL) SS_UP(X_LALT) SS_UP(X_LCTRL) SS_DELAY(1000) MACRO_VALUE SS_TAP(X_ENTER));
+          SEND_STRING(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_TAP(X_DEL) SS_UP(X_LALT) SS_UP(X_LCTRL) SS_DELAY(2000) MACRO_VALUE SS_TAP(X_ENTER));
       }
       return false;
       break;
