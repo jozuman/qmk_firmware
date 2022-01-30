@@ -100,23 +100,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* 3. Function layer
  *                                                         v----------NUM PAD----------v
  * ,-----------------------------------------------------------------------------------.
- * |   1  | Win1 | Win2 | Win3 | Win4 | Win5 |   6  |   7  |   7  |   8  |   9  |   /  |
+ * |   1  | Win1 | Win2 | Win3 | Win4 | Win5 |   6  |   7  |   7  |   8  |   9  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |MailAr|      |      |      |   *  |   *  |   F  |   4  |   5  |   6  |   *  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |   K  |   W  |TRM_PS|   *  |   *  |   R  |   1  |   2  |   3  |   -  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |CtlAlD|      |      |   A  |   O  |             |   E  |   0  |   .  |   .  |   +  |
+ * |CtlAlD|      |      |      |   O  |             |TG(3) |   0  |   .  |   /  |   +  |
  * `-----------------------------------------------------------------------------------'
  * MailAr = Outlook Mail Archive shortcut
  * TRM_PS = Terminal Paste = Shift + Insert to paste into terminals so function + v instead of ctrl + v
  * CtlAlD = Ctrl + Alt + D + Custom Macro + More
  */
 [_FUNCTION] = LAYOUT_planck_grid(
-    KC_1,     WIN_1,            WIN_2,   WIN_3,   WIN_4,        KC_5,  KC_6,  KC_7, KC_7, KC_8,   KC_9,    KC_PSLS,
-    KC_NO,    LCTL(LSFT(KC_1)), _______, _______, _______,      KC_T,  KC_Y,  KC_U, KC_4, KC_5,   KC_6,    KC_PAST,
-    KC_NO,    _______,          KC_S,    KC_D,    LSFT(KC_INS), KC_G,  KC_H,  KC_J, KC_1, KC_2,   KC_3,    KC_PMNS,
-    MY_MACRO, _______,          KC_NO,   KC_TRNS, KC_V,         KC_NO, KC_NO, KC_N, KC_0, KC_DOT, KC_DOT,  KC_PPLS
+    KC_1,     WIN_1,            WIN_2,   WIN_3,   WIN_4,        KC_5,  KC_6,  KC_7,  KC_7, KC_8,   KC_9,    KC_TRNS,
+    KC_NO,    LCTL(LSFT(KC_1)), _______, _______, _______,      KC_T,  KC_Y,  KC_U,  KC_4, KC_5,   KC_6,    KC_PAST,
+    KC_NO,    _______,          KC_S,    KC_D,    LSFT(KC_INS), KC_G,  KC_H,  KC_J,  KC_1, KC_2,   KC_3,    KC_PMNS,
+    MY_MACRO, _______,          KC_NO,   KC_TRNS, KC_V,         KC_NO, KC_NO, TG(3), KC_0, KC_DOT, KC_PSLS, KC_PPLS
 ),
 
 /* 4. Adjust (Lower + Raise)
