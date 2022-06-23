@@ -7,7 +7,8 @@ https://docs.qmk.fm/#/newbs_building_firmware
 
 # Getting latest code from upstream
 - use `mystuff` branch for all my commits
-- backup my branch to a `mystuff-backup-[date]` branch or maybe tag a release?? not sure if tagging a release will work after the branch is force pushed
+- backup my branch to a `mystuff-backup-[YYYY-MM-DD]` branch or maybe tag a release?? not sure if tagging a release will work after the branch is force pushed
+- checkout `mystuff` if not already
 - `git pull` in order to not miss anything I may have done anywhere else (especially because it will be completely lost with a -f)
 - `git fetch upstream`
 - `git rebase upstream/master`
