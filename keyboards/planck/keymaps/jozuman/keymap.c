@@ -126,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |  ^^  |  ^^  |MUSmod|Aud on|Audoff|AGnorm|AGswap|Qwerty|DM_REC|DM_PLY|DM_STP|  ^^  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |keyloc|Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|TermOn|TermOf|BL_TOG|BL_STE|BL_BRT|
+ * |keyloc|Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|  ^^  |  ^^  |BL_TOG|BL_STE|BL_BRT|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |  ^^  |  ^^  |  ^^  |  ^^  |  ^^  |             |  ^^  |BL_ON |BL_OFF|BL_INC|BL_DEC|
  * `-----------------------------------------------------------------------------------'
@@ -135,7 +135,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ADJUST] = LAYOUT_planck_grid(
     KC_TRNS, RESET,   DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL,
     KC_TRNS, KC_TRNS, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  DM_REC1,  DM_PLY1, DM_RSTP, KC_TRNS,
-    KC_LOCK, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  TERM_ON, TERM_OFF, BL_TOGG, BL_STEP, BL_BRTG,
+    KC_LOCK, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  KC_TRNS, KC_TRNS,  BL_TOGG, BL_STEP, BL_BRTG,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, BL_ON,    BL_OFF,  BL_INC,  BL_DEC
 )
 
