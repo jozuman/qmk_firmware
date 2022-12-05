@@ -133,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * DM* = Dynamic Macros. tried putting these on the Function layer but I was encountering issues
  */
 [_ADJUST] = LAYOUT_planck_grid(
-    KC_TRNS, RESET,   DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL,
+    KC_TRNS, RESET,   DB_TOGG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL,
     KC_TRNS, KC_TRNS, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  DM_REC1,  DM_PLY1, DM_RSTP, KC_TRNS,
     KC_LOCK, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  KC_TRNS, KC_TRNS,  BL_TOGG, BL_STEP, BL_BRTG,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, BL_ON,    BL_OFF,  BL_INC,  BL_DEC
@@ -199,7 +199,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case MY_MACRO:
       if (record->event.pressed) {
-          SEND_STRING(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_TAP(X_DEL) SS_UP(X_LALT) SS_UP(X_LCTRL) SS_DELAY(2000) MACRO_VALUE SS_TAP(X_ENTER));
+          SEND_STRING(SS_LCTL(SS_LALT(SS_TAP(X_DEL))) SS_DELAY(2000) MACRO_VALUE SS_TAP(X_ENTER));
       }
       return false;
       break;
