@@ -13,6 +13,7 @@ https://docs.qmk.fm/#/newbs_building_firmware
 - `git fetch upstream`
 - `git rebase upstream/master`
 - `git push -f`
+- `git pull --recurse-submodules`
 - If master does not have a green checkmark on the latest commit https://github.com/qmk/qmk_firmware or if you just want to ensure a little more stability, use the latest release tag in git.
   - `git checkout [tag-number]`
   - `git switch -c [tag-number]-branch`
