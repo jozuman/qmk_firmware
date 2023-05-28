@@ -24,7 +24,9 @@ enum planck_layers {
   _LOWER,
   _RAISE,
   _FUNCTION,
-  _ADJUST
+  _ADJUST,
+  _QWERTY_MAC,
+  _FUNCTION_MAC
 };
 
 enum planck_keycodes {
@@ -55,10 +57,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_planck_grid(
-    KC_ESC,  KC_Q,    KC_W,    KC_E,  KC_R,  KC_T,   KC_Y,   KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC,
-    KC_TAB,  KC_A,    KC_S,    KC_D,  KC_F,  KC_G,   KC_H,   KC_J,  KC_K,    KC_L,    KC_SCLN, KC_ENT,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,  KC_V,  KC_B,   KC_N,   KC_M,  KC_COMM, KC_DOT,  KC_UP,   RSFT_T(KC_QUOT),
-    KC_LCTL, KC_LGUI, KC_LALT, TT(3), LOWER, KC_SPC, KC_SPC, RAISE, KC_SLSH, KC_LEFT, KC_DOWN, KC_RGHT
+    KC_ESC,  KC_Q,    KC_W,    KC_E,          KC_R,  KC_T,   KC_Y,   KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC,
+    KC_TAB,  KC_A,    KC_S,    KC_D,          KC_F,  KC_G,   KC_H,   KC_J,  KC_K,    KC_L,    KC_SCLN, KC_ENT,
+    KC_LSFT, KC_Z,    KC_X,    KC_C,          KC_V,  KC_B,   KC_N,   KC_M,  KC_COMM, KC_DOT,  KC_UP,   RSFT_T(KC_QUOT),
+    KC_LCTL, KC_LGUI, KC_LALT, TT(_FUNCTION), LOWER, KC_SPC, KC_SPC, RAISE, KC_SLSH, KC_LEFT, KC_DOWN, KC_RGHT
+),
+
+/* 5. Qwerty Mac
+ * ,-----------------------------------------------------------------------------------.
+ * | Esc  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Tab  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |Enter |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  Up  |Shift'|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | cmd  | ctrl |Option|Fn_Mac| Lower|    Space    |Raise |   /  | Left | Down |Right |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_QWERTY_MAC] = LAYOUT_planck_grid(
+    KC_ESC,  KC_Q,    KC_W,    KC_E,              KC_R,  KC_T,   KC_Y,   KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC,
+    KC_TAB,  KC_A,    KC_S,    KC_D,              KC_F,  KC_G,   KC_H,   KC_J,  KC_K,    KC_L,    KC_SCLN, KC_ENT,
+    KC_LSFT, KC_Z,    KC_X,    KC_C,              KC_V,  KC_B,   KC_N,   KC_M,  KC_COMM, KC_DOT,  KC_UP,   RSFT_T(KC_QUOT),
+    KC_LGUI, KC_LCTL, KC_LALT, TT(_FUNCTION_MAC), LOWER, KC_SPC, KC_SPC, RAISE, KC_SLSH, KC_LEFT, KC_DOWN, KC_RGHT
 ),
 
 /* 1. Lower
@@ -113,10 +133,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * CtlAlD = Ctrl + Alt + D + Custom Macro + More
  */
 [_FUNCTION] = LAYOUT_planck_grid(
-    KC_1,     WIN_1,            WIN_2,   WIN_3,   WIN_4,        KC_5,  KC_6,  KC_7,  KC_7, KC_8,   KC_9,    KC_TRNS,
-    KC_NO,    LCTL(LSFT(KC_1)), _______, _______, _______,      KC_T,  KC_Y,  KC_U,  KC_4, KC_5,   KC_6,    KC_PAST,
-    KC_NO,    _______,          KC_S,    KC_D,    LSFT(KC_INS), KC_G,  KC_H,  KC_J,  KC_1, KC_2,   KC_3,    KC_PMNS,
-    MY_MACRO, _______,          KC_NO,   KC_TRNS, KC_V,         KC_NO, KC_NO, TG(3), KC_0, KC_DOT, KC_PSLS, KC_PPLS
+    KC_1,     WIN_1,            WIN_2,   WIN_3,   WIN_4,        KC_5,  KC_6,  KC_7,          KC_7, KC_8,   KC_9,    KC_TRNS,
+    KC_NO,    LCTL(LSFT(KC_1)), _______, _______, _______,      KC_T,  KC_Y,  KC_U,          KC_4, KC_5,   KC_6,    KC_PAST,
+    KC_NO,    _______,          KC_S,    KC_D,    LSFT(KC_INS), KC_G,  KC_H,  KC_J,          KC_1, KC_2,   KC_3,    KC_PMNS,
+    MY_MACRO, _______,          KC_NO,   KC_TRNS, KC_V,         KC_NO, KC_NO, TG(_FUNCTION), KC_0, KC_DOT, KC_PSLS, KC_PPLS
+),
+
+/* 6. Function layer Mac
+ *                                                         v----------NUM PAD----------v
+ * ,-----------------------------------------------------------------------------------.
+ * |   1  |MsCtrl|      |      |      |      |   6  |   7  |   7  |   8  |   9  | Bksp |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |MailAr|      |      |      |   *  |   *  |   F  |   4  |   5  |   6  |   *  |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |   K  |   W  |TRM_PS|   *  |   *  |   R  |   1  |   2  |   3  |   -  |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |CtlAlD|      |      |      |   O  |             |TG(3) |   0  |   .  |   /  |   +  |
+ * `-----------------------------------------------------------------------------------'
+ * MailAr = Outlook Mail Archive shortcut
+ * TRM_PS = Terminal Paste = Shift + Insert to paste into terminals so function + v instead of ctrl + v
+ * CtlAlD = Ctrl + Alt + D + Custom Macro + More
+ * MsCtrl = Mission Control
+ */
+[_FUNCTION] = LAYOUT_planck_grid(
+    KC_1,     KC_MCTL,          KC_TRNS, KC_TRNS, KC_TRNS,      KC_5,  KC_6,  KC_7,          KC_7, KC_8,   KC_9,    KC_TRNS,
+    KC_NO,    LCTL(LSFT(KC_1)), _______, _______, _______,      KC_T,  KC_Y,  KC_U,          KC_4, KC_5,   KC_6,    KC_PAST,
+    KC_NO,    _______,          KC_S,    KC_D,    LSFT(KC_INS), KC_G,  KC_H,  KC_J,          KC_1, KC_2,   KC_3,    KC_PMNS,
+    MY_MACRO, _______,          KC_NO,   KC_TRNS, KC_V,         KC_NO, KC_NO, TG(_FUNCTION), KC_0, KC_DOT, KC_PSLS, KC_PPLS
 ),
 
 /* 4. Adjust (Lower + Raise)
@@ -133,10 +176,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * DM* = Dynamic Macros. tried putting these on the Function layer but I was encountering issues
  */
 [_ADJUST] = LAYOUT_planck_grid(
-    KC_TRNS, QK_BOOTLOADER,           DB_TOGG,             RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD,         KC_DEL,
-    KC_TRNS, KC_TRNS,                 QK_MUSIC_MODE_NEXT,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  DM_REC1,  DM_PLY1, DM_RSTP,         KC_TRNS,
-    QK_LOCK, QK_AUDIO_VOICE_PREVIOUS, QK_AUDIO_VOICE_NEXT, MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  KC_TRNS, KC_TRNS,  BL_TOGG, BL_STEP,         BL_BRTG,
-    KC_TRNS, KC_TRNS,                 KC_TRNS,             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, BL_ON,    BL_OFF,  QK_BACKLIGHT_UP, QK_BACKLIGHT_DOWN
+    DF(_QWERTY_MAC), QK_BOOTLOADER,           DB_TOGG,             RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD,         KC_DEL,
+    DF(_QWERTY),     KC_TRNS,                 QK_MUSIC_MODE_NEXT,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  DM_REC1,  DM_PLY1, DM_RSTP,         KC_TRNS,
+    QK_LOCK,         QK_AUDIO_VOICE_PREVIOUS, QK_AUDIO_VOICE_NEXT, MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  KC_TRNS, KC_TRNS,  BL_TOGG, BL_STEP,         BL_BRTG,
+    KC_TRNS,         KC_TRNS,                 KC_TRNS,             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, BL_ON,    BL_OFF,  QK_BACKLIGHT_UP, QK_BACKLIGHT_DOWN
 )
 
 };
@@ -233,7 +276,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case TT(3):
+    case TT(_FUNCTION):
       if (!record->event.pressed) {
         if (win_pressed) {
             #ifdef CONSOLE_ENABLE
