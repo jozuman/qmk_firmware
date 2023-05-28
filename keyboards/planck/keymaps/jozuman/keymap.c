@@ -20,12 +20,12 @@
 #include "print.h"
 
 enum planck_layers {
-  _QWERTY,
+  _QWERTY_MAC,
   _LOWER,
   _RAISE,
   _FUNCTION,
   _ADJUST,
-  _QWERTY_MAC,
+  _QWERTY,
   _FUNCTION_MAC
 };
 
@@ -45,7 +45,7 @@ enum planck_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/* 0. Qwerty
+/* 5. Qwerty
  * ,-----------------------------------------------------------------------------------.
  * | Esc  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -63,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LCTL, KC_LGUI, KC_LALT, TT(_FUNCTION), LOWER, KC_SPC, KC_SPC, RAISE, KC_SLSH, KC_LEFT, KC_DOWN, KC_RGHT
 ),
 
-/* 5. Qwerty Mac
+/* 0. Qwerty Mac
  * ,-----------------------------------------------------------------------------------.
  * | Esc  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
