@@ -1,7 +1,7 @@
 https://docs.qmk.fm/#/newbs_building_firmware
 
 # Build & Install
-- open QMK MSYS and run `qmk compile`
+- open QMK MSYS (or just a mac terminal) and run `qmk compile`
 - open QMK Toolbox and flash `C:\Users\timgr\git\qmk_firmware\planck_rev6_drop_jozuman.bin`.
   - keyboard needs to be in bootloader mode via Raise+Lower+Q
 
