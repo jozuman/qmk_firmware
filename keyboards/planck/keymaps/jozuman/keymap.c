@@ -16,7 +16,7 @@
 
 #include QMK_KEYBOARD_H
 #include "muse.h"
-#include "jozuman.h"
+// #include "jozuman.h"
 #include "print.h"
 
 enum planck_layers {
@@ -32,7 +32,7 @@ enum planck_layers {
 enum planck_keycodes {
   QWERTY = SAFE_RANGE,
   BACKLIT,
-  MY_MACRO,
+  // MY_MACRO,
   WIN_1,
   WIN_2,
   WIN_3,
@@ -136,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_1,     WIN_1,            WIN_2,   WIN_3,   WIN_4,        KC_5,  KC_6,  KC_7,          KC_7, KC_8,   KC_9,    KC_TRNS,
     KC_NO,    LCTL(LSFT(KC_1)), _______, _______, _______,      KC_T,  KC_Y,  KC_U,          KC_4, KC_5,   KC_6,    KC_PAST,
     KC_NO,    _______,          KC_S,    KC_D,    LSFT(KC_INS), KC_G,  KC_H,  KC_J,          KC_1, KC_2,   KC_3,    KC_PMNS,
-    MY_MACRO, _______,          KC_NO,   KC_TRNS, KC_V,         KC_NO, KC_NO, TG(_FUNCTION), KC_0, KC_DOT, KC_PSLS, KC_PPLS
+    _______, _______,          KC_NO,   KC_TRNS, KC_V,         KC_NO, KC_NO, TG(_FUNCTION), KC_0, KC_DOT, KC_PSLS, KC_PPLS
 ),
 
 /* 6. Function layer Mac
@@ -160,7 +160,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LGUI(KC_TILD), KC_MCTL,          KC_TRNS,          KC_TRNS, KC_TRNS,      KC_5,  KC_6,  KC_7,          KC_7, KC_8,   KC_9,    KC_TRNS,
     LGUI(KC_TAB),  LCTL(LSFT(KC_1)), LSFT(LGUI(KC_4)), _______, _______,      KC_T,  KC_Y,  KC_U,          KC_4, KC_5,   KC_6,    KC_PAST,
     KC_NO,         _______,          KC_S,             KC_D,    LSFT(KC_INS), KC_G,  KC_H,  KC_J,          KC_1, KC_2,   KC_3,    KC_PMNS,
-    MY_MACRO,      _______,          KC_NO,            KC_TRNS, KC_V,         KC_NO, KC_NO, TG(_FUNCTION), KC_0, KC_DOT, KC_PSLS, KC_PPLS
+    _______,      _______,          KC_NO,            KC_TRNS, KC_V,         KC_NO, KC_NO, TG(_FUNCTION), KC_0, KC_DOT, KC_PSLS, KC_PPLS
 ),
 
 /* 4. Adjust (Lower + Raise)
@@ -241,12 +241,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case MY_MACRO:
-      if (record->event.pressed) {
-          SEND_STRING(SS_LCTL(SS_LALT(SS_TAP(X_DEL))) SS_DELAY(2000) MACRO_VALUE SS_TAP(X_ENTER));
-      }
-      return false;
-      break;
+    // case MY_MACRO:
+    //   if (record->event.pressed) {
+    //       SEND_STRING(SS_LCTL(SS_LALT(SS_TAP(X_DEL))) SS_DELAY(2000) MACRO_VALUE SS_TAP(X_ENTER));
+    //   }
+    //   return false;
+    //   break;
     case WIN_1:
       if (record->event.pressed) {
           crazy_win_magic(KC_1);
