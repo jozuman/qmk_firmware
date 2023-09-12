@@ -47,3 +47,6 @@
 
 // Most tactile encoders have detents every 4 stages
 #define ENCODER_RESOLUTION 4
+
+// For RSFT_T(KC_QUOT) to function like a normal shift button (and how QMK used to handle it by default) whenever I hold down a letter to capitalize it.
+#define HOLD_ON_OTHER_KEY_PRESS
